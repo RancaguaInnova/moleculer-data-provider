@@ -13,7 +13,6 @@ import {
  * @returns {Object} Data response
  */
 const convertHTTPResponse = (response, type, resource, params) => {
-  console.log("RESPONSE:", response)
   const { headers, json } = response
   switch (type) {
   case GET_LIST:
