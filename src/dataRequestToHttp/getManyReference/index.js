@@ -10,8 +10,8 @@ const getManyReference = (params, apiUrl, resource) => {
     page: JSON.stringify(page),
     query: JSON.stringify({
       ...params.filter,
-      [params.target]: params.id,
-    }),
+      [params.target]: params.id
+    })
   }
   return `${apiUrl}/${resource}?${stringify(query)}`
 }
