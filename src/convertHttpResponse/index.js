@@ -8,7 +8,7 @@ import { GET_LIST, GET_MANY_REFERENCE, CREATE, DELETE_MANY } from "ra-core"
  * @returns {Object} Data response
  */
 const convertHTTPResponse = (response, type, resource, params) => {
-  const { headers, json } = response
+  const { json } = response
   switch (type) {
     case GET_LIST:
     case GET_MANY_REFERENCE:
