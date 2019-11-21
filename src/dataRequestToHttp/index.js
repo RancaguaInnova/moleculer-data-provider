@@ -1,12 +1,4 @@
-import {
-  GET_LIST,
-  GET_ONE,
-  GET_MANY,
-  GET_MANY_REFERENCE,
-  CREATE,
-  UPDATE,
-  DELETE,
-} from "ra-core"
+import { GET_LIST, GET_ONE, GET_MANY, GET_MANY_REFERENCE, CREATE, UPDATE, DELETE } from "ra-core"
 
 import getList from "./getList"
 import getOne from "./getOne"
@@ -28,32 +20,32 @@ const convertDataRequestToHTTP = (apiUrl, type, resource, params) => {
     options: {}
   }
   switch (type) {
-  case GET_LIST: {
-    httpRequest.url = getList(params, apiUrl, resource)
-    break
-  }
-  case GET_ONE:
-    httpRequest.url = getOne(params, apiUrl, resource)
-    break
-  case GET_MANY: {
-    httpRequest.url = getMany(params, apiUrl, resource)
-    break
-  }
-  case GET_MANY_REFERENCE: {
-    httpRequest.url = getManyReference(params, apiUrl, resource)
-    break
-  }
-  case UPDATE:
-    httpRequest = update(params, apiUrl, resource)
-    break
-  case CREATE:
-    httpRequest = create(params, apiUrl, resource)
-    break
-  case DELETE:
-    httpRequest = deleteRequest(params, apiUrl, resource)
-    break
-  default:
-    throw new Error(`Unsupported fetch action type ${type}`)
+    case GET_LIST: {
+      httpRequest.url = getList(params, apiUrl, resource)
+      break
+    }
+    case GET_ONE:
+      httpRequest.url = getOne(params, apiUrl, resource)
+      break
+    case GET_MANY: {
+      httpRequest.url = getMany(params, apiUrl, resource)
+      break
+    }
+    case GET_MANY_REFERENCE: {
+      httpRequest.url = getManyReference(params, apiUrl, resource)
+      break
+    }
+    case UPDATE:
+      httpRequest = update(params, apiUrl, resource)
+      break
+    case CREATE:
+      httpRequest = create(params, apiUrl, resource)
+      break
+    case DELETE:
+      httpRequest = deleteRequest(params, apiUrl, resource)
+      break
+    default:
+      throw new Error(`Unsupported fetch action type ${type}`)
   }
   return httpRequest
 }

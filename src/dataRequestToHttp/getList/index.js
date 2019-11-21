@@ -2,7 +2,6 @@ import { stringify } from "query-string"
 import transformSort from "../../helpers/transformSort"
 
 const getList = (params, apiUrl, resource) => {
-  console.log('params:', params)
   const { page, perPage } = params.pagination
   const { field, order } = params.sort
 
