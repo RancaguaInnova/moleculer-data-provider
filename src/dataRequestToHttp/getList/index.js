@@ -4,14 +4,23 @@ import transformSort from "../../helpers/transformSort"
 const getList = (params, apiUrl, resource) => {
   const { page, perPage } = params.pagination
   const { field, order } = params.sort
+  const { search } = params.filter
 
-  const query = {
+  const request = {
     sort: transformSort(field, order),
     pageSize: JSON.stringify(perPage),
-    page: JSON.stringify(page),
-    query: JSON.stringify({ ...params.filter })
+    page: JSON.stringify(page)
   }
-  return `${apiUrl}/${resource}?${stringify(query)}`
+
+  let query = Object.assign({}, params.filter)
+
+  if (search) {
+    delete query.search
+    request.search = search
+  }
+
+  request.query = JSON.stringify(query)
+  return `${apiUrl}/${resource}?${stringify(request)}`
 }
 
 export default getList
